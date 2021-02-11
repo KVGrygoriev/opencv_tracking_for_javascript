@@ -521,7 +521,7 @@ class CV_EXPORTS TrackerModel
 
 /** @brief Base abstract class for the long-term tracker:
  */
-class CV_EXPORTS_W Tracker : public virtual Algorithm
+class CV_EXPORTS_W Tracker : public Algorithm
 {
  public:
 

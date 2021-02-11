@@ -159,6 +159,9 @@ class Builder:
         else:
             cmd.append("-DBUILD_DOCS=OFF")
 
+        if self.options.extra_modules:
+            cmd += ["-DOPENCV_EXTRA_MODULES_PATH='%s'" %self.options.extra_modules]
+
         flags = self.get_build_flags()
         if flags:
             cmd += ["-DCMAKE_C_FLAGS='%s'" % flags,
@@ -207,6 +210,7 @@ if __name__ == "__main__":
     parser.add_argument('--skip_config', action="store_true", help="Skip cmake config")
     parser.add_argument('--config_only', action="store_true", help="Only do cmake config")
     parser.add_argument('--enable_exception', action="store_true", help="Enable exception handling")
+    parser.add_argument('--extra_modules', default="", help="Path to extra modules")
     args = parser.parse_args()
 
     log.basicConfig(format='%(message)s', level=log.DEBUG)
