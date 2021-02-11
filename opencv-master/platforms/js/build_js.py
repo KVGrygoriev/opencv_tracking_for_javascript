@@ -60,7 +60,7 @@ def find_file(name, path):
 
 def determine_emcc_version(emscripten_dir):
     ret = subprocess.check_output([os.path.join(emscripten_dir, "emcc"), "--version"])
-    m = re.match(r'^emcc.*(\d+\.\d+\.\d+)', ret, flags=re.IGNORECASE)
+    m = re.match(r'^emcc.*(\d+\.\d+\.\d+)', ret.decode('utf-8'), flags=re.IGNORECASE)
     return m.group(1)
 
 def determine_opencv_version(version_hpp_path):
